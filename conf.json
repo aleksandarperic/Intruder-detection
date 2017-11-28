@@ -1,0 +1,16 @@
+{
+    "show_video": true,
+    "send_email": false,
+    "video_width": 860,
+    "min_upload_seconds": 3.0,
+    "min_motion_frames": 6,
+    "camera_warmup_time": 1.0,
+    "delta_thresh": 5,
+    "min_area": 500,
+    "alarm_sound_path": "Intruder.wav",
+    "video": null,
+    "from_email": "",
+    "with_password": "",
+    "to_email": "",
+    "email_subject": ""
+}
