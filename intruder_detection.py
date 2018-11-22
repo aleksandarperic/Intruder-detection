@@ -46,15 +46,29 @@ password = conf["with_password"]
 to_address = conf["to_email"]
 email_subject = conf["email_subject"]
 
+poly_pts = []
+poly_trigger = True
+
 while True:
     (grabbed, frame) = camera.read()
+
+    if not grabbed:
+        break
+
+    pd = PolygonDrawer("Draw shape to track", frame)
+
+    if poly_trigger is True:
+        frame_pts = pd.runInitial()
+        frame = frame_pts[0]
+        poly_pts = frame_pts[1]
+        poly_trigger = False
+    else:
+        frame = pd.runContinue(poly_pts)
+
     frameWithoutRectangles = frame
     text = "Normal"
     timestamp = datetime.datetime.now()
     date_string = timestamp.strftime("%d.%m.%Y %H:%M:%S%p")
-
-    if not grabbed:
-        break
 
     # for performance increase, we should set video_width to something like 500 pixels
     # we should also convert image to black&white (for motion detection, color of the image doesn't matter)

@@ -78,17 +78,17 @@ class PolygonDrawer(object):
         cv2.waitKey()
 
         cv2.destroyWindow(self.window_name)
-        return result
+        return (result, self.points)
 
-    def runContinue(self):
+    def runContinue(self, pts):
         if (self.img is None):
             img = cv2.imread("coke.jpg")
         else:
             img = self.img
         stencil = np.zeros(img.shape).astype(img.dtype)
         # of a filled polygon
-        if (len(self.points) > 0):
-            cv2.fillPoly(stencil, np.array([self.points]), FINAL_LINE_COLOR)
+        if (len(pts) > 0):
+            cv2.fillPoly(stencil, np.array([pts]), FINAL_LINE_COLOR)
         result = cv2.bitwise_and(img, stencil)
         return result
 
@@ -97,6 +97,6 @@ class PolygonDrawer(object):
 if __name__ == "__main__":
     snapshot = cv2.imread("pepsi.png")
     pd = PolygonDrawer("Polygon", snapshot)
-    image = pd.runInitial()
+    image = pd.runInitial()[0]
     cv2.imwrite("polygon.png", image)
     print("Polygon = %s" % pd.points)

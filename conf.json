@@ -8,7 +8,7 @@
     "delta_thresh": 5,
     "min_area": 500,
     "alarm_sound_path": "Intruder.wav",
-    "video": null,
+    "video": "/home/aleksandar/Desktop/sample.mp4",
     "from_email": "",
     "with_password": "",
     "to_email": "",
