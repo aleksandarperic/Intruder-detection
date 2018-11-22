@@ -1,5 +1,6 @@
 from utilities.tempimage import TempImage
 from utilities import sendmail
+from utilities.drawpolygon import PolygonDrawer
 import argparse
 import datetime
 import imutils
