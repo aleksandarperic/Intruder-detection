@@ -55,6 +55,7 @@ while True:
     if not grabbed:
         break
 
+    frame = imutils.resize(frame, width=video_width)
     pd = PolygonDrawer("Draw shape to track", frame)
 
     if poly_trigger is True:
@@ -73,7 +74,6 @@ while True:
     # for performance increase, we should set video_width to something like 500 pixels
     # we should also convert image to black&white (for motion detection, color of the image doesn't matter)
     # we should also blur the image to have smooth edges, even 2 consecutive frames aren't exactly the same, so this way we're eliminating too much variations
-    frame = imutils.resize(frame, width=video_width)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (21, 21), 0)
 
